@@ -27,12 +27,10 @@
         </activity>
         <!-- <activity android:name=".CardTestActivity"></activity> -->
 
-
-
-
-
-        <activity android:name=".CardTestActivity"
+        <activity
+            android:name=".CardTestActivity"
             android:parentActivityName=".MainActivity">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -42,6 +40,18 @@
 
 
 
+
+        <!-- <activity android:name=".dynamicTest1Activity"></activity> -->
+
+        <activity
+            android:name=".dynamicTest1Activity"
+            android:parentActivityName=".MainActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
 
 
 
