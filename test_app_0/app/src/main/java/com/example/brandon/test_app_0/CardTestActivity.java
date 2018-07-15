@@ -17,7 +17,13 @@ public class CardTestActivity extends AppCompatActivity {
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE_2);
 
         // Capture the layout's TextView and set the string as its text
+
         TextView textView = findViewById(R.id.textView3);
         textView.setText(message);
+
+
+
+
+
     }
 }
