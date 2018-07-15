@@ -53,14 +53,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    /** Called when the user clicks the Send button */
-//    public void sendMessage(View view) {
-//        // Do something in response to button
-//        Intent intent = new Intent(this, DisplayMessageActivity.class);
-//        EditText editText = (EditText) findViewById(R.id.edit_message);
-//        String message = editText.getText().toString();
-//        intent.putExtra(EXTRA_MESSAGE, message);
-//        startActivity(intent);
-//
-//    }
+
+
+
+
+    /** Called when the user taps the go to card activity button */
+    public void goToDynamicTest2Activity(View view) {
+        Intent intent = new Intent(this, dynamicTest2Activity.class);
+        EditText editText = (EditText) findViewById(R.id.editTextNumCards);
+        String message = editText.getText().toString();
+//        println(message);
+        intent.putExtra(EXTRA_MESSAGE_2, message);
+        startActivity(intent);
+    }
+
+
 }
