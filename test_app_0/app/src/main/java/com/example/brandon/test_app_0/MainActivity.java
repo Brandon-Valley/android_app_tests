@@ -68,4 +68,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
+
+
+    /** Called when the user taps the go to card activity button */
+    public void goToActionBar1Activity(View view) {
+        Intent intent = new Intent(this, actionBar1Activity.class);
+        EditText editText = (EditText) findViewById(R.id.editTextNumCards);
+        String message = editText.getText().toString();
+//        println(message);
+        intent.putExtra(EXTRA_MESSAGE_2, message);
+        startActivity(intent);
+    }
+
+
 }

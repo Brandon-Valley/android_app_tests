@@ -6,4 +6,6 @@
     <string name="edit_num_cards">enter # of cards</string>
     <string name="button_go_to_dynamic_test_1">go to dynamic test 1</string>
     <string name="button_go_to_dynamic_test_2">go to dynamic test 2</string>
+    <string name="button_go_to_action_bar_test_1">Go to action bar test 1</string>
+    <string name="title_activity_action_bar1">actionBar1Activity</string>
 </resources>
