@@ -19,16 +19,16 @@ public class actionBar1Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        //dynamically add button to toolbar
         Button b2=new Button(this);
-//        b2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        b2.setText("Dynamic");
-        b2.setTextSize(30);
-        //b2.setTextColor(b1.getTextColors());
-
-
-//        LinearLayout container = (LinearLayout)findViewById(R.id.linear_layout_0);
+        b2.setText("()");
+        b2.setTextSize(10);
         toolbar.addView(b2);
+
+
+        //enable back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
 
