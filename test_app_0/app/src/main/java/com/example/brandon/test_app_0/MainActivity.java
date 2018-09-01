@@ -68,8 +68,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
+//commented this out in rolla!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//    // Create the text message with a string
+//    Intent sendIntent = new Intent();
+//
+//    sendIntent.putExtra("FROM", "Main");
+//
+//
+//
+//
+//    Intent mIntent = new Intent(this, actionBar1Activity.class);
+//    mIntent.putExtra(key, value);
 
 
     /** Called when the user taps the go to card activity button */

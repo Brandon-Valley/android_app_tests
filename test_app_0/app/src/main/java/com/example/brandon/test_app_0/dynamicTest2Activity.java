@@ -17,5 +17,6 @@ public class dynamicTest2Activity extends AppCompatActivity {
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE_2);
 
 
+
     }
 }
