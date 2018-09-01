@@ -5,17 +5,16 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class actionBar1Activity extends AppCompatActivity {
+    public String activityName = "actionBar1Activity";
 
     private Object view;
 
@@ -25,20 +24,23 @@ public class actionBar1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_action_bar1);
 
         // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 //        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE_2);
         String from = intent.getStringExtra("from");
         String msg = intent.getStringExtra("msg");
 
-//        /** Called when the user taps the go to card activity button */
-//        public void goToNameCardActivity(View view)
+
+        TestClass tc = new TestClass();
+
+
+        //make test class if from main
+        if (from == "MainActivity")
+        {
+            tc.testInt ++;
+        }
+//        else if (from == "nameCardActivity java")
 //        {
-//            Intent intent = new Intent(this, nameCardActivity.class);
-////            EditText editText = (EditText) findViewById(R.id.editTextNumCards);
-////            String message = editText.getText().toString();
-//////        println(message);
-////            intent.putExtra(EXTRA_MESSAGE_2, message);
-//            startActivity(intent);
+//            tc = intent.getSerializableExtra("tc");
 //        }
 
 
@@ -61,26 +63,24 @@ public class actionBar1Activity extends AppCompatActivity {
 
 
 
-//        /** Called when the user taps the go to card activity button */
-//        public void goToNameCardActivity(View view) {
-//            Intent intent = new Intent(this, nameCardActivity.class);
-////            EditText editText = (EditText) findViewById(R.id.editTextNumCards);
-////            String message = editText.getText().toString();
-//////        println(message);
-////            intent.putExtra(EXTRA_MESSAGE_2, message);
-//            startActivity(intent);
-//        }
-
 
 
         //setup floating action button
+        tc.testInt += 2;
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n text !!!!!!!!!!!!!!!!!!!!!------------00--------" + tc.testInt  );
+        final Intent intent2 = new Intent(actionBar1Activity.this, nameCardActivity.class);
+        intent2.putExtra("fromActivity", activityName);
+        intent2.putExtra("tc", tc);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(actionBar1Activity.this, nameCardActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(actionBar1Activity.this, nameCardActivity.class);
+//                Intent.putExtra("from", "MainActivity");
+//                Intent.putExtra("msg", "TEST MSG from main Activity");
+
+                startActivity(intent2);
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
             }
@@ -138,12 +138,15 @@ public class actionBar1Activity extends AppCompatActivity {
         // Initialize a new TextView to put in CardView
         TextView tv2 = new TextView(mContext);
         tv2.setLayoutParams(params);
-        tv2.setText(from);
+        tv2.setText(from + "testInt = " + tc.testInt);
         tv2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 60);
         tv2.setTextColor(Color.RED);
 
         // Finally, add the CardView in root layout
         container.addView(tv2);
+
+
+
 
 
 
