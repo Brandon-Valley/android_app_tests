@@ -26,8 +26,9 @@ public class actionBar1Activity extends AppCompatActivity {
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE_2);
-
+//        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE_2);
+        String from = intent.getStringExtra("from");
+        String msg = intent.getStringExtra("msg");
 
 //        /** Called when the user taps the go to card activity button */
 //        public void goToNameCardActivity(View view)
@@ -118,7 +119,8 @@ public class actionBar1Activity extends AppCompatActivity {
 //        tv.setText("ON CREATE");
 //        container.addView(tv);
 
-        //make text view
+
+        //dynamically make text view
         // Initialize a new TextView to put in CardView
         TextView tv = new TextView(mContext);
         tv.setLayoutParams(params);
@@ -130,6 +132,27 @@ public class actionBar1Activity extends AppCompatActivity {
         container.addView(tv);
 
         tv.setText("ON CREATE 1");
+
+
+        //dynamically make 2nd text view to show message from last activity
+        // Initialize a new TextView to put in CardView
+        TextView tv2 = new TextView(mContext);
+        tv2.setLayoutParams(params);
+        tv2.setText(from);
+        tv2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 60);
+        tv2.setTextColor(Color.RED);
+
+        // Finally, add the CardView in root layout
+        container.addView(tv2);
+
+
+
+
+
+
+
+
+
     }
 
 }

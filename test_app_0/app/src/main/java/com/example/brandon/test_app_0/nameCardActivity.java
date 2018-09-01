@@ -23,12 +23,15 @@ public class nameCardActivity extends AppCompatActivity {
 
     /** Called when the user taps the Send button */
     public void sendCardName(View view) {
-        Intent intent2 = new Intent(nameCardActivity.this, actionBar1Activity.class);
+        //get name of card entered by user
         EditText editText = (EditText) findViewById(R.id.editText_card_name);
-        String message = editText.getText().toString();
-//        println(message);
-        intent2.putExtra(NEW_CARD_NAME, message);
-        startActivity(intent2);
+        String cardName = editText.getText().toString();
+
+        //make intent to send to action bar activity
+        Intent Intent = new Intent(this, actionBar1Activity.class);
+        Intent.putExtra("from", "nameCardActivity java");
+        Intent.putExtra("cardName", cardName);
+        startActivity(Intent);
     }
 
 
