@@ -6,11 +6,13 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import static java.sql.Types.NULL;
 
 public class StaticCards0Activity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,26 +37,26 @@ public class StaticCards0Activity extends AppCompatActivity {
         CardView card = new CardView(mContext);
 
         // Set the CardView layoutParams
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
         int margin = 10;
-        params.topMargin   = margin;
-        params.rightMargin = margin;
-        params.leftMargin  = margin;
-        params.height = 100;
+        cardViewParams.topMargin   = margin;
+        cardViewParams.rightMargin = margin;
+        cardViewParams.leftMargin  = margin;
+        cardViewParams.height = 200;
 
 
-        card.setLayoutParams(params);
+        card.setLayoutParams(cardViewParams);
 
-        card.setMinimumHeight(40);
+//        card.setMinimumHeight(80);
 
         // Set CardView corner radius
         card.setRadius(9);
 
-        card.setMinimumWidth(container.getWidth());
+//        card.setMinimumWidth(container.getWidth());
 
         // Set cardView content padding
         card.setContentPadding(100, 30, 30, 30);
@@ -67,6 +69,15 @@ public class StaticCards0Activity extends AppCompatActivity {
 
         // Set CardView elevation
         card.setCardElevation(9);
+
+
+        ImageButton overflowBtn = new ImageButton(this);
+        overflowBtn.setImageResource(R.drawable.baseline_more_vert_black_18dp);
+//        overflowBtn.setLayoutParams(lp);
+//        overflowBtn.setOnClickListener(mGreenBallOnClickListener);
+        overflowBtn.setBackgroundColor(Color.TRANSPARENT);
+
+        card.addView(overflowBtn);
 
         // Finally, add the CardView in root layout
         container.addView(card);
