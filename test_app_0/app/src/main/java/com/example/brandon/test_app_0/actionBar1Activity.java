@@ -16,6 +16,7 @@ import android.widget.TextView;
 public class actionBar1Activity extends AppCompatActivity {
     public String activityName = "actionBar1Activity";
 
+
     private Object view;
 
     @Override
@@ -28,20 +29,37 @@ public class actionBar1Activity extends AppCompatActivity {
 //        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE_2);
         String from = intent.getStringExtra("from");
         String msg = intent.getStringExtra("msg");
+        TestClass tc = getIntent().getExtras().getParcelable("tc");
+        tc.testInt += 2;
 
 
-        TestClass tc = new TestClass();
-
+//        TestClass tc = new TestClass();
+//        TestClass tc;
 
         //make test class if from main
-        if (from == "MainActivity")
+        if (from.equals("MainActivity"))
         {
-            tc.testInt ++;
+//            tc = new TestClass();
+//            tc.testInt = 3;
         }
-//        else if (from == "nameCardActivity java")
-//        {
-//            tc = intent.getSerializableExtra("tc");
-//        }
+        else if (from.equals("nameCardActivity"))
+        {
+            System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            //tc = getIntent().getExtras().getParcelable("tc");
+            //System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n\n\n just got from nameCard !!!!!!!!!!!!!!!!!!!!!>>>>>>>>>>>>>" + tc.testInt  );
+        }
+        else
+        {
+            System.out.println(from + "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+            System.out.println(from + "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+            System.out.println(from + "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+            System.out.println(from + "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+            tc = new TestClass();
+        }
 
 
 
@@ -66,8 +84,8 @@ public class actionBar1Activity extends AppCompatActivity {
 
 
         //setup floating action button
-        tc.testInt += 2;
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n text !!!!!!!!!!!!!!!!!!!!!------------00--------" + tc.testInt  );
+//        tc.testInt += 2;
+        //System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n text !!!!!!!!!!!!!!!!!!!!!------------00--------" + tc.testInt  );
         final Intent intent2 = new Intent(actionBar1Activity.this, nameCardActivity.class);
         intent2.putExtra("fromActivity", activityName);
         intent2.putExtra("tc", tc);
@@ -137,10 +155,43 @@ public class actionBar1Activity extends AppCompatActivity {
         //dynamically make 2nd text view to show message from last activity
         // Initialize a new TextView to put in CardView
         TextView tv2 = new TextView(mContext);
+
+//        System.out.println("!!!!!\n\n\n !!!!!!!!!!!!!!!!!!!!!!!! \n from type = " + from.getClass().getName() );
+//
+//        String fromStr = from.toString();
+//        System.out.println("!!!\n!\n!\n\n\n !!!!!!!!!!!!!!!!!!!!!!!! \n from type = " + fromStr.getClass().getName() );
+        if (from instanceof String)
+        {
+            tv2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
+        }
+        else
+            tv2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 60);
+
+        System.out.println("!\n!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!\n! from = (" + from + ")" );
+        System.out.println("!\n!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!\n! from[0] = (" + from.charAt(0) + ")" );
+
+        if (from.equals("MainActivity"))
+        {
+            tv2.setTextColor(Color.GREEN);
+        }
+        else
+        {
+            tv2.setTextColor(Color.RED);
+        }
+//
+//        String x = "x";
+//        if (x == "x")
+//        {
+//            tv2.setTextColor(Color.GREEN);
+//        }
+//        else
+//        {
+//            tv2.setTextColor(Color.RED);
+//        }
+
         tv2.setLayoutParams(params);
         tv2.setText(from + "testInt = " + tc.testInt);
-        tv2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 60);
-        tv2.setTextColor(Color.RED);
+
 
         // Finally, add the CardView in root layout
         container.addView(tv2);

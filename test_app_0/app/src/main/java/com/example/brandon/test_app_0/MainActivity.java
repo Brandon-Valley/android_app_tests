@@ -86,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
         Intent mIntent = new Intent(this, actionBar1Activity.class);
         mIntent.putExtra("from", "MainActivity");
         mIntent.putExtra("msg", "TEST MSG from main Activity");
+        TestClass tc = new TestClass();
+        tc.testInt = 1;
+        mIntent.putExtra("tc", tc);
         startActivity(mIntent);
 
 //        Intent intent = new Intent(this, actionBar1Activity.class);

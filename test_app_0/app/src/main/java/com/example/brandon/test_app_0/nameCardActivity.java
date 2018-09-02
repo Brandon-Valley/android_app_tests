@@ -15,7 +15,7 @@ import java.io.Serializable;
 import com.example.brandon.test_app_0.TestClass;
 
 public class nameCardActivity extends AppCompatActivity {
-    public String activityName = "nameCardActivity java";
+    public String activityName = "nameCardActivity";
     public static final String NEW_CARD_NAME = "com.example.brandon.test_app_0.NEW_CARD_NAME";
 
 //    TestClass tc;
@@ -55,9 +55,9 @@ public class nameCardActivity extends AppCompatActivity {
 
         //make intent to send to action bar activity
         Intent Intent = new Intent(this, actionBar1Activity.class);
-        Intent.putExtra("from", "nameCardActivity java");
+        Intent.putExtra("from", activityName);
         Intent.putExtra("cardName", cardName);
-//        Intent.putExtra("tc", tc);
+        Intent.putExtra("tc", tc);
         startActivity(Intent);
     }
 
