@@ -69,20 +69,18 @@
                 android:value=".MainActivity" />
         </activity>
 
-
-        <!--<activity-->
-            <!--android:name=".nameCardActivity"-->
-            <!--android:label="@string/title_name_card_activity"-->
-            <!--android:parentActivityName=".actionBar1Activity"-->
-            <!--&gt;-->
-
-            <!--&lt;!&ndash; The meta-data tag is required if you support API level 15 and lower &ndash;&gt;-->
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".actionBar1Activity" />-->
-        <!--</activity>-->
+        <!-- <activity -->
+        <!-- android:name=".nameCardActivity" -->
+        <!-- android:label="@string/title_name_card_activity" -->
+        <!-- android:parentActivityName=".actionBar1Activity" -->
+        <!-- &gt; -->
 
 
+        <!-- &lt;!&ndash; The meta-data tag is required if you support API level 15 and lower &ndash;&gt; -->
+        <!-- <meta-data -->
+        <!-- android:name="android.support.PARENT_ACTIVITY" -->
+        <!-- android:value=".actionBar1Activity" /> -->
+        <!-- </activity> -->
 
         <activity
             android:name=".nameCardActivity"
@@ -95,6 +93,16 @@
                 android:value=".actionBar1Activity" />
         </activity>
 
+        <activity
+            android:name=".StaticCards0Activity"
+            android:label="StaticCards0Activity"
+            android:parentActivityName=".MainActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
 
     </application>
 

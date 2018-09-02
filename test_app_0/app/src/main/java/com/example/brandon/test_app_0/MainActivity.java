@@ -68,17 +68,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//commented this out in rolla!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//    // Create the text message with a string
-//    Intent sendIntent = new Intent();
-//
-//    sendIntent.putExtra("FROM", "Main");
-//
-//
-//
-//
-//    Intent mIntent = new Intent(this, actionBar1Activity.class);
-//    mIntent.putExtra(key, value);
 
 
     /** Called when the user taps the go to card activity button */
@@ -90,14 +79,13 @@ public class MainActivity extends AppCompatActivity {
         tc.testInt = 1;
         mIntent.putExtra("tc", tc);
         startActivity(mIntent);
-
-//        Intent intent = new Intent(this, actionBar1Activity.class);
-//        EditText editText = (EditText) findViewById(R.id.editTextNumCards);
-//        String message = editText.getText().toString();
-////        println(message);
-//        intent.putExtra(EXTRA_MESSAGE_2, message);
-//        startActivity(intent);
     }
 
 
+
+    /** Called when the user taps the go to card activity button */
+    public void goToStaticCards0Activity(View view) {
+        Intent intent = new Intent(this, StaticCards0Activity.class);
+        startActivity(intent);
+    }
 }
