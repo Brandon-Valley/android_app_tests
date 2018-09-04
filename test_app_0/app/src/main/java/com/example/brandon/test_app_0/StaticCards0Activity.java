@@ -6,8 +6,12 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import static java.sql.Types.NULL;
 
@@ -51,12 +55,8 @@ public class StaticCards0Activity extends AppCompatActivity {
 
         card.setLayoutParams(cardViewParams);
 
-//        card.setMinimumHeight(80);
-
         // Set CardView corner radius
         card.setRadius(9);
-
-//        card.setMinimumWidth(container.getWidth());
 
         // Set cardView content padding
         card.setContentPadding(100, 30, 30, 30);
@@ -71,13 +71,61 @@ public class StaticCards0Activity extends AppCompatActivity {
         card.setCardElevation(9);
 
 
+//        // Set the overflow button layoutParams
+//        LinearLayout.LayoutParams overflowBtnParams = card.getLayoutParams(
+////                cardv.LayoutParams.MATCH_PARENT,
+////                LinearLayout.LayoutParams.WRAP_CONTENT
+//        );
+
+//        RelativeLayout simpleRelativeLayout;
+//        simpleRelativeLayout.setid = simpleRelativeLayout;
+//        simpleRelativeLayout = (RelativeLayout) ;findViewById(R.id.simpleRelativeLayout);
+
+//        RelativeLayout.LayoutParams cardRelativeLayout =
+//                new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+//                        RelativeLayout.LayoutParams.MATCH_PARENT);
+
+        RelativeLayout cardRelativeLayout = new RelativeLayout(getApplicationContext());
+
+        //define relative layout button
+        RelativeLayout.LayoutParams buttonParams =
+                new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                                                RelativeLayout.LayoutParams.MATCH_PARENT);
+
+        buttonParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+
+//        buttonParams.topMargin   = margin;
+//        buttonParams.rightMargin = card.getWidth();
+//        buttonParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+//        buttonParams.lay
+        //buttonParams.leftMargin  = margin;
+        //cardViewParams.height = 200;
+
         ImageButton overflowBtn = new ImageButton(this);
         overflowBtn.setImageResource(R.drawable.baseline_more_vert_black_18dp);
-//        overflowBtn.setLayoutParams(lp);
+        overflowBtn.setLayoutParams(buttonParams);
 //        overflowBtn.setOnClickListener(mGreenBallOnClickListener);
         overflowBtn.setBackgroundColor(Color.TRANSPARENT);
+        cardRelativeLayout.addView(overflowBtn);
 
-        card.addView(overflowBtn);
+        //new relativeLayout fro textView
+        RelativeLayout.LayoutParams textViewParams =
+                new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                                                RelativeLayout.LayoutParams.MATCH_PARENT);
+
+        textViewParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+
+        // Initialize a new TextView to put in CardView
+        TextView tv = new TextView(mContext);
+        tv.setLayoutParams(textViewParams);
+        tv.setText("CardView");
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
+        tv.setTextColor(Color.BLACK);
+        cardRelativeLayout.addView(tv);
+
+//        card.addView(tv);
+//        card.addView(overflowBtn);
+        card.addView(cardRelativeLayout);
 
         // Finally, add the CardView in root layout
         container.addView(card);
