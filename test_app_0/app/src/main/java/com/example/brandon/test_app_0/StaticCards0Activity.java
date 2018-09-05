@@ -165,7 +165,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         greenCard.setLayoutParams(greenCardParams);
 
         greenCard.setRadius(9);
-        greenCard.setContentPadding(100, 30, 30, 30);
+        greenCard.setContentPadding(30, 30, 30, 30);
         greenCard.setCardBackgroundColor(Color.parseColor("GREEN"));
         greenCard.setMaxCardElevation(15);
         greenCard.setCardElevation(9);
