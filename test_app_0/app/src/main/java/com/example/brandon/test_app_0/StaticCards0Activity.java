@@ -139,13 +139,10 @@ public class StaticCards0Activity extends AppCompatActivity {
         bigCard.setCardElevation(9);
 
 
-        //relative layout for inside of card
+        // layout for inside of big card
         RelativeLayout bigCardViewLayout = new RelativeLayout(getApplicationContext());
-//
-//        // Set the linear layout for inside the big card
-//        LinearLayout.LayoutParams bigCardViewLayout = new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.MATCH_PARENT,
-//                LinearLayout.LayoutParams.WRAP_CONTENT);
+//        LinearLayout bigCardViewLayout = new LinearLayout(getApplicationContext());
+
 
 
 
@@ -159,9 +156,12 @@ public class StaticCards0Activity extends AppCompatActivity {
         );
 
 //        int margin = 10;
+
+        //these still have some effect, overide parent padding???
         greenCardParams.topMargin   = margin;
         greenCardParams.rightMargin = margin;
         greenCardParams.leftMargin  = margin;
+
         greenCardParams.height = 200;  //change this to something about min hieght so it fits contents????
 
 
@@ -183,17 +183,34 @@ public class StaticCards0Activity extends AppCompatActivity {
 
 
 
+        //make 2nd small card (yellow)
+        CardView yellowCard = new CardView(mContext);
+
+        // Set the CardView layoutParams
+        LinearLayout.LayoutParams yellowCardParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+
+//        int margin = 10;
+
+        //these still have some effect, overide parent padding???
+        yellowCardParams.topMargin   = margin;
+        yellowCardParams.rightMargin = margin;
+        yellowCardParams.leftMargin  = margin;
+
+        yellowCardParams.height = 100;  //change this to something about min hieght so it fits contents????
 
 
+        yellowCard.setLayoutParams(yellowCardParams);
 
+        yellowCard.setRadius(9);
+        yellowCard.setContentPadding(30, 30, 30, 30);
+        yellowCard.setCardBackgroundColor(Color.parseColor("YELLOW"));
+        yellowCard.setMaxCardElevation(15);
+        yellowCard.setCardElevation(9);
 
-
-
-
-
-
-
-
+        bigCardViewLayout.addView(yellowCard);
 
 
 
