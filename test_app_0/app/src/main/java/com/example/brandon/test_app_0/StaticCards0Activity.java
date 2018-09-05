@@ -133,16 +133,19 @@ public class StaticCards0Activity extends AppCompatActivity {
         bigCard.setLayoutParams(bigCardViewParams);
 
         bigCard.setRadius(9);
-        bigCard.setContentPadding(100, 30, 30, 30);
+        bigCard.setContentPadding(30, 30, 30, 30);  // these are margins for cards inside this card (green and yellow)
         bigCard.setCardBackgroundColor(Color.parseColor("BLUE"));
         bigCard.setMaxCardElevation(15);
         bigCard.setCardElevation(9);
 
 
-        // Set the linear layout for inside the big card
-        LinearLayout.LayoutParams bigCardViewlayout = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
+        //relative layout for inside of card
+        RelativeLayout bigCardViewLayout = new RelativeLayout(getApplicationContext());
+//
+//        // Set the linear layout for inside the big card
+//        LinearLayout.LayoutParams bigCardViewLayout = new LinearLayout.LayoutParams(
+//                LinearLayout.LayoutParams.MATCH_PARENT,
+//                LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
 
@@ -170,7 +173,34 @@ public class StaticCards0Activity extends AppCompatActivity {
         greenCard.setMaxCardElevation(15);
         greenCard.setCardElevation(9);
 
-        bigCard.addView(greenCard);
+        bigCardViewLayout.addView(greenCard);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        bigCard.addView(bigCardViewLayout);
+
+//        bigCard.addView(greenCard);
 
 
         container.addView(bigCard);
