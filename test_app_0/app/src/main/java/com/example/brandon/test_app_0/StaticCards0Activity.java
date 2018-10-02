@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.TypedValue;
+import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -127,7 +128,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         bigCardViewParams.topMargin   = margin;
         bigCardViewParams.rightMargin = margin;
         bigCardViewParams.leftMargin  = margin;
-        bigCardViewParams.height = 400;  //change this to something about min hieght so it fits contents????
+        bigCardViewParams.height = 800;  //change this to something about min hieght so it fits contents????
 
 
         bigCard.setLayoutParams(bigCardViewParams);
@@ -200,6 +201,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         yellowCardParams.leftMargin  = margin;
 
         yellowCardParams.height = 100;  //change this to something about min hieght so it fits contents????
+        yellowCardParams.gravity = 50;
 
 
         yellowCard.setLayoutParams(yellowCardParams);
@@ -222,5 +224,32 @@ public class StaticCards0Activity extends AppCompatActivity {
 
         container.addView(bigCard);
 //        bigCard.addView(card);
+
+
+
+
+
+
+//        CardView card = new CardView(new ContextThemeWrapper(MyActivity.this, R.style.CardViewStyle), null, 0);
+//        LinearLayout cardInner = new LinearLayout(new ContextThemeWrapper(MyActivity.this, R.style.Widget_CardContent));
+//
+//        TextView tv_title = new TextView(this);
+//        tv_title.setLayoutParams(new LinearLayout.LayoutParams(
+//                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
+//        ));
+//        tv_title.setTextAppearance(this, R.style.TextAppearance_AppCompat_Title);
+//        tv_title.setText("Name");
+//
+//        TextView tv_caption = new TextView(this);
+//        tv_caption.setLayoutParams(new LinearLayout.LayoutParams(
+//                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
+//        ));
+//        tv_caption.setText("Sus");
+//
+//        cardInner.addView(tv_title);
+//        cardInner.addView(tv_caption);
+
+
+
     }
 }
