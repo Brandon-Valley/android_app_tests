@@ -118,6 +118,9 @@ public class StaticCards0Activity extends AppCompatActivity {
         //add big card
         CardView bigCard = new CardView(mContext);
 
+        LinearLayout bigCardViewLayout = new LinearLayout(getApplicationContext());  //must be something wrong with this!!!!!!!!!!
+        bigCardViewLayout.setOrientation(LinearLayout.VERTICAL);
+
         // Set the CardView layoutParams
         LinearLayout.LayoutParams bigCardViewParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -131,7 +134,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         bigCardViewParams.height = 800;  //change this to something about min hieght so it fits contents????
 
 
-        bigCard.setLayoutParams(bigCardViewParams);
+//        bigCard.setLayoutParams(bigCardViewParams);
 
         bigCard.setRadius(9);
         bigCard.setContentPadding(30, 30, 30, 30);  // these are margins for cards inside this card (green and yellow)
@@ -140,10 +143,10 @@ public class StaticCards0Activity extends AppCompatActivity {
         bigCard.setCardElevation(9);
 
 
-        // layout for inside of big card
-        RelativeLayout bigCardViewLayout = new RelativeLayout(getApplicationContext());
-//        LinearLayout bigCardViewLayout = new LinearLayout(getApplicationContext());
 
+        // layout for inside of big card
+//        RelativeLayout bigCardViewLayout = new RelativeLayout(getApplicationContext());
+        bigCardViewLayout.setLayoutParams(bigCardViewParams);
 
 
 
