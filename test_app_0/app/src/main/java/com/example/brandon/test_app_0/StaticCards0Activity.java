@@ -48,9 +48,10 @@ public class StaticCards0Activity extends AppCompatActivity {
         );
 
         int margin = 10;
-        cardViewParams.topMargin   = margin;
-        cardViewParams.rightMargin = margin;
-        cardViewParams.leftMargin  = margin;
+        cardViewParams.topMargin     = margin;
+        cardViewParams.rightMargin   = margin;
+        cardViewParams.leftMargin    = margin;
+        cardViewParams.bottomMargin  = margin;
         cardViewParams.height = 200;
 
 
@@ -114,11 +115,10 @@ public class StaticCards0Activity extends AppCompatActivity {
         // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 1st card ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-
         //add big card
         CardView bigCard = new CardView(mContext);
 
-        LinearLayout bigCardViewLayout = new LinearLayout(getApplicationContext());  //must be something wrong with this!!!!!!!!!!
+        LinearLayout bigCardViewLayout = new LinearLayout(getApplicationContext());
         bigCardViewLayout.setOrientation(LinearLayout.VERTICAL);
 
         // Set the CardView layoutParams
@@ -128,13 +128,19 @@ public class StaticCards0Activity extends AppCompatActivity {
         );
 
 //        int margin = 10;
-        bigCardViewParams.topMargin   = margin;
-        bigCardViewParams.rightMargin = margin;
-        bigCardViewParams.leftMargin  = margin;
+        bigCardViewParams.topMargin     = margin;
+        bigCardViewParams.rightMargin   = margin;
+        bigCardViewParams.leftMargin    = margin;
+        bigCardViewParams.bottomMargin  = margin;
         bigCardViewParams.height = 800;  //change this to something about min hieght so it fits contents????
 
 
-//        bigCard.setLayoutParams(bigCardViewParams);
+        // layout for inside of big card
+//        RelativeLayout bigCardViewLayout = new RelativeLayout(getApplicationContext());
+        bigCardViewLayout.setLayoutParams(bigCardViewParams);
+
+
+        bigCard.setLayoutParams(bigCardViewParams);
 
         bigCard.setRadius(9);
         bigCard.setContentPadding(30, 30, 30, 30);  // these are margins for cards inside this card (green and yellow)
@@ -144,9 +150,7 @@ public class StaticCards0Activity extends AppCompatActivity {
 
 
 
-        // layout for inside of big card
-//        RelativeLayout bigCardViewLayout = new RelativeLayout(getApplicationContext());
-        bigCardViewLayout.setLayoutParams(bigCardViewParams);
+
 
 
 
@@ -216,6 +220,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         yellowCard.setCardElevation(9);
 
         bigCardViewLayout.addView(yellowCard);
+//        container.addView(yellowCard);
 
 
 
