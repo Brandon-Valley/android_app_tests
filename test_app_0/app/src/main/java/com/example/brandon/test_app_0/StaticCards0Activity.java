@@ -132,7 +132,6 @@ public class StaticCards0Activity extends AppCompatActivity {
         bigCardViewParams.rightMargin   = margin;
         bigCardViewParams.leftMargin    = margin;
         bigCardViewParams.bottomMargin  = margin;
-        bigCardViewParams.height = 800;  //change this to something about min hieght so it fits contents????
 
 
         // layout for inside of big card
@@ -170,7 +169,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         greenCardParams.rightMargin = margin;
         greenCardParams.leftMargin  = margin;
 
-        greenCardParams.height = 200;  //change this to something about min hieght so it fits contents????
+        greenCardParams.height = 200;  //Only here b/c nothing inside card, without this param card height will shink to fit content
 
 
         greenCard.setLayoutParams(greenCardParams);
@@ -207,8 +206,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         yellowCardParams.rightMargin = margin;
         yellowCardParams.leftMargin  = margin;
 
-        yellowCardParams.height = 100;  //change this to something about min hieght so it fits contents????
-        yellowCardParams.gravity = 50;
+        yellowCardParams.height = 100;  //Only here b/c nothing inside card, without this param card height will shink to fit content
 
 
         yellowCard.setLayoutParams(yellowCardParams);
