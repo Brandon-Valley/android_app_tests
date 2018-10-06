@@ -54,7 +54,7 @@ public class StaticCards0Activity extends AppCompatActivity {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
-        int margin = 10;
+        int margin = 20;
         cardViewParams.topMargin     = margin;
         cardViewParams.rightMargin   = margin;
         cardViewParams.leftMargin    = margin;
@@ -91,13 +91,13 @@ public class StaticCards0Activity extends AppCompatActivity {
         buttonParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
 
         ImageButton overflowBtn = new ImageButton(this);
-        overflowBtn.setImageResource(R.drawable.baseline_more_vert_black_18dp);
+        overflowBtn.setImageResource(R.drawable.baseline_more_vert_black_18dp); // https://material.io/tools/icons/?style=baseline
         overflowBtn.setLayoutParams(buttonParams);
 //        overflowBtn.setOnClickListener(mGreenBallOnClickListener);
         overflowBtn.setBackgroundColor(Color.TRANSPARENT);
         cardRelativeLayout.addView(overflowBtn);
 
-        //new relativeLayout fro textView
+        //new relativeLayout for textView
         RelativeLayout.LayoutParams textViewParams =
                 new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
                                                 RelativeLayout.LayoutParams.MATCH_PARENT);
@@ -159,6 +159,37 @@ public class StaticCards0Activity extends AppCompatActivity {
 
 
 
+        // more button for big card VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+
+
+//        buttonParams2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+
+        ImageButton horzOverflowBtn = new ImageButton(this);
+        horzOverflowBtn.setImageResource(R.drawable.baseline_more_horiz_black_18dp); // https://material.io/tools/icons/?style=baseline
+
+
+        LinearLayout.LayoutParams horzOverflowBtnParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, //width
+                LinearLayout.LayoutParams.WRAP_CONTENT  //height
+        );
+
+        horzOverflowBtnParams.gravity = Gravity.RIGHT;
+
+
+        horzOverflowBtn.setLayoutParams(horzOverflowBtnParams);
+//        overflowBtn.setOnClickListener(mGreenBallOnClickListener);
+
+        horzOverflowBtn.setBackgroundColor(Color.TRANSPARENT);
+;
+        bigCardViewLayout.addView(horzOverflowBtn);
+
+
+
+
+
+        //green card VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
 
         //make 1st small card (green)
         CardView greenCard = new CardView(mContext);
@@ -169,7 +200,6 @@ public class StaticCards0Activity extends AppCompatActivity {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
-//        int margin = 10;
 
         //these still have some effect, overide parent padding???
         greenCardParams.topMargin   = margin;
@@ -202,8 +232,6 @@ public class StaticCards0Activity extends AppCompatActivity {
         logicSpinnerArray.add("AND");
         logicSpinnerArray.add("OR");
 
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-//                this, android.R.layout.simple_spinner_item, logicSpinnerArray);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, logicSpinnerArray);
@@ -238,7 +266,6 @@ public class StaticCards0Activity extends AppCompatActivity {
                 {
                     card.setCardBackgroundColor(Color.parseColor("BLUE"));
                 }
-
             }
 
             @Override
