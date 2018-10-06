@@ -9,10 +9,15 @@ import android.support.v7.widget.CardView;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.sql.Types.NULL;
 
@@ -186,6 +191,38 @@ public class StaticCards0Activity extends AppCompatActivity {
 
 
 
+        // 1st spinner VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+
+        Spinner logicSpinner1 = new Spinner(mContext);
+
+        List<String> logicSpinnerArray =  new ArrayList<String>();
+        logicSpinnerArray.add("And");
+        logicSpinnerArray.add("Or");
+
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+//                this, android.R.layout.simple_spinner_item, logicSpinnerArray);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, logicSpinnerArray);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        logicSpinner1.setAdapter(adapter);
+
+
+        LinearLayout.LayoutParams spinnerParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+
+
+        logicSpinner1.setLayoutParams(spinnerParams);
+
+        container.addView(logicSpinner1);
+//        bigCardViewLayout.addView(logicSpinner1);
+
+
+
 
 
 
@@ -199,7 +236,8 @@ public class StaticCards0Activity extends AppCompatActivity {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
-//        int margin = 10;
+
+
 
         //these still have some effect, overide parent padding???
         yellowCardParams.topMargin   = margin;
