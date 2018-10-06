@@ -197,8 +197,8 @@ public class StaticCards0Activity extends AppCompatActivity {
         Spinner logicSpinner1 = new Spinner(mContext);
 
         List<String> logicSpinnerArray =  new ArrayList<String>();
-        logicSpinnerArray.add("And");
-        logicSpinnerArray.add("Or");
+        logicSpinnerArray.add("AND");
+        logicSpinnerArray.add("OR");
 
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 //                this, android.R.layout.simple_spinner_item, logicSpinnerArray);
@@ -211,12 +211,16 @@ public class StaticCards0Activity extends AppCompatActivity {
 
 
         LinearLayout.LayoutParams spinnerParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
+                LinearLayout.LayoutParams.WRAP_CONTENT, //width
+                LinearLayout.LayoutParams.WRAP_CONTENT  //height
         );
 
+        spinnerParams.gravity = Gravity.CENTER;
 
         logicSpinner1.setLayoutParams(spinnerParams);
+
+
+//        logicSpinner1.setGravity(Gravity.CENTER);
 
         container.addView(logicSpinner1);
 //        bigCardViewLayout.addView(logicSpinner1);
