@@ -9,6 +9,8 @@ import android.support.v7.widget.CardView;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -44,7 +46,7 @@ public class StaticCards0Activity extends AppCompatActivity {
 
         //add top blank card
         // Initialize a new CardView
-        CardView card = new CardView(mContext);
+        final CardView card = new CardView(mContext);
 
         // Set the CardView layoutParams
         LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(
@@ -194,7 +196,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         // 1st spinner VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 
 
-        Spinner logicSpinner1 = new Spinner(mContext);
+        final Spinner logicSpinner1 = new Spinner(mContext);
 
         List<String> logicSpinnerArray =  new ArrayList<String>();
         logicSpinnerArray.add("AND");
@@ -220,10 +222,31 @@ public class StaticCards0Activity extends AppCompatActivity {
         logicSpinner1.setLayoutParams(spinnerParams);
 
 
-//        logicSpinner1.setGravity(Gravity.CENTER);
-
         container.addView(logicSpinner1);
 //        bigCardViewLayout.addView(logicSpinner1);
+
+
+        logicSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String text = logicSpinner1.getSelectedItem().toString();
+                if (text == "AND")
+                {
+                    card.setCardBackgroundColor(Color.parseColor("RED"));
+                }
+                else
+                {
+                    card.setCardBackgroundColor(Color.parseColor("BLUE"));
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
 
 
 
@@ -278,24 +301,18 @@ public class StaticCards0Activity extends AppCompatActivity {
 
 
 
-//        CardView card = new CardView(new ContextThemeWrapper(MyActivity.this, R.style.CardViewStyle), null, 0);
-//        LinearLayout cardInner = new LinearLayout(new ContextThemeWrapper(MyActivity.this, R.style.Widget_CardContent));
-//
-//        TextView tv_title = new TextView(this);
-//        tv_title.setLayoutParams(new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
-//        ));
-//        tv_title.setTextAppearance(this, R.style.TextAppearance_AppCompat_Title);
-//        tv_title.setText("Name");
-//
-//        TextView tv_caption = new TextView(this);
-//        tv_caption.setLayoutParams(new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
-//        ));
-//        tv_caption.setText("Sus");
-//
-//        cardInner.addView(tv_title);
-//        cardInner.addView(tv_caption);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
