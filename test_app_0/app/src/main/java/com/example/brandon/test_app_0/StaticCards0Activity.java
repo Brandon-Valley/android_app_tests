@@ -9,11 +9,14 @@ import android.support.v7.widget.CardView;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -37,7 +40,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         LinearLayout container = (LinearLayout)findViewById(R.id.linear_layout_0); // have to put this in .xml manually
 
         // Get the application context
-        Context mContext = getApplicationContext();
+        final Context mContext = getApplicationContext();
 
 
 
@@ -90,7 +93,7 @@ public class StaticCards0Activity extends AppCompatActivity {
                                                 RelativeLayout.LayoutParams.MATCH_PARENT);
         buttonParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
 
-        ImageButton overflowBtn = new ImageButton(this);
+        final ImageButton overflowBtn = new ImageButton(this);
         overflowBtn.setImageResource(R.drawable.baseline_more_vert_black_18dp); // https://material.io/tools/icons/?style=baseline
         overflowBtn.setLayoutParams(buttonParams);
 //        overflowBtn.setOnClickListener(mGreenBallOnClickListener);
@@ -105,7 +108,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         textViewParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
 
         // Initialize a new TextView to put in CardView
-        TextView tv = new TextView(mContext);
+        final TextView tv = new TextView(mContext);
         tv.setLayoutParams(textViewParams);
         tv.setText("CardView");
         tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
@@ -116,6 +119,78 @@ public class StaticCards0Activity extends AppCompatActivity {
 
         // Finally, add the CardView in root layout
         container.addView(card);
+
+
+
+        //popup menue for more button VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+
+
+
+
+        overflowBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu menu = new PopupMenu(mContext, v);
+                menu.getMenu().add(Menu.NONE, 1, 1, "delete");
+                menu.getMenu().add(Menu.NONE, 2, 2, "edit");
+                menu.getMenu().add(Menu.NONE, 3, 3, "move");
+                menu.show();
+
+
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        int i = item.getItemId();
+                        CharSequence a = item.getTitle();
+                        tv.setText("CardView" + a + i);
+
+                        if (i == 1) {
+                            //handle share
+                            card.setCardBackgroundColor(Color.parseColor("GREEN"));
+                            return true;
+                        } else if (i == 2) {
+                            card.setCardBackgroundColor(Color.parseColor("YELLOW"));
+                            //handle comment
+                            return true;
+                        } else {
+                            card.setCardBackgroundColor(Color.parseColor("BLUE"));
+                            return false;
+                        }
+                    }
+
+                });
+
+            }
+        });
+
+//        .setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+//                String text = logicSpinner1.getSelectedItem().toString();
+//                if (text == "AND")
+//                {
+//                    card.setCardBackgroundColor(Color.parseColor("RED"));
+//                }
+//                else
+//                {
+//                    card.setCardBackgroundColor(Color.parseColor("BLUE"));
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parentView) {
+//                // your code here
+//            }
+//
+//        });
+
+
+
+
+
+
 
 
 
@@ -134,7 +209,6 @@ public class StaticCards0Activity extends AppCompatActivity {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
-//        int margin = 10;
         bigCardViewParams.topMargin     = margin;
         bigCardViewParams.rightMargin   = margin;
         bigCardViewParams.leftMargin    = margin;
@@ -231,6 +305,8 @@ public class StaticCards0Activity extends AppCompatActivity {
         List<String> logicSpinnerArray =  new ArrayList<String>();
         logicSpinnerArray.add("AND");
         logicSpinnerArray.add("OR");
+        logicSpinnerArray.add("AND NOT");
+        logicSpinnerArray.add("OR NOT");
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
@@ -238,7 +314,6 @@ public class StaticCards0Activity extends AppCompatActivity {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         logicSpinner1.setAdapter(adapter);
-
 
         LinearLayout.LayoutParams spinnerParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, //width
