@@ -40,7 +40,7 @@ public class StaticCards0Activity extends AppCompatActivity {
 
 
         //define linear layout for activity
-        LinearLayout container = (LinearLayout)findViewById(R.id.linear_layout_0); // have to put this in .xml manually
+        final LinearLayout container = (LinearLayout)findViewById(R.id.linear_layout_0); // have to put this in .xml manually
 
         // Get the application context
         final Context mContext = getApplicationContext();
@@ -136,7 +136,7 @@ public class StaticCards0Activity extends AppCompatActivity {
             public void onClick(View v) {
                 PopupMenu menu = new PopupMenu(mContext, v);
                 menu.getMenu().add(Menu.NONE, 1, 1, "delete");
-                menu.getMenu().add(Menu.NONE, 2, 2, "edit");
+                menu.getMenu().add(Menu.NONE, 2, 2, "edit / remove card test");
                 menu.getMenu().add(Menu.NONE, 3, 3, "move / change width test");
                 menu.show();
 
@@ -155,12 +155,13 @@ public class StaticCards0Activity extends AppCompatActivity {
                             return true;
                         } else if (i == 2) {
                             card.setCardBackgroundColor(Color.parseColor("YELLOW"));
+                            container.removeView(card);
                             //handle comment
                             return true;
                         } else {
                             card.setCardBackgroundColor(Color.parseColor("BLUE"));
                             cardViewParams.height = 400;
-                            
+
                             card.setLayoutParams(cardViewParams);
                             return false;
                         }
