@@ -2,7 +2,10 @@ package com.example.brandon.test_app_0;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -52,7 +55,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         final CardView card = new CardView(mContext);
 
         // Set the CardView layoutParams
-        LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(
+        final LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
@@ -134,7 +137,7 @@ public class StaticCards0Activity extends AppCompatActivity {
                 PopupMenu menu = new PopupMenu(mContext, v);
                 menu.getMenu().add(Menu.NONE, 1, 1, "delete");
                 menu.getMenu().add(Menu.NONE, 2, 2, "edit");
-                menu.getMenu().add(Menu.NONE, 3, 3, "move");
+                menu.getMenu().add(Menu.NONE, 3, 3, "move / change width test");
                 menu.show();
 
 
@@ -156,6 +159,9 @@ public class StaticCards0Activity extends AppCompatActivity {
                             return true;
                         } else {
                             card.setCardBackgroundColor(Color.parseColor("BLUE"));
+                            cardViewParams.height = 400;
+                            
+                            card.setLayoutParams(cardViewParams);
                             return false;
                         }
                     }
@@ -165,26 +171,7 @@ public class StaticCards0Activity extends AppCompatActivity {
             }
         });
 
-//        .setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-//                String text = logicSpinner1.getSelectedItem().toString();
-//                if (text == "AND")
-//                {
-//                    card.setCardBackgroundColor(Color.parseColor("RED"));
-//                }
-//                else
-//                {
-//                    card.setCardBackgroundColor(Color.parseColor("BLUE"));
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parentView) {
-//                // your code here
-//            }
-//
-//        });
+
 
 
 
@@ -300,7 +287,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         // 1st spinner VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 
 
-        final Spinner logicSpinner1 = new Spinner(mContext);
+        final Spinner logicSpinner1 = new Spinner(mContext);//, R.style.Widget_AppCompat_Spinner_Underlined);
 
         List<String> logicSpinnerArray =  new ArrayList<String>();
         logicSpinnerArray.add("AND");
@@ -321,6 +308,8 @@ public class StaticCards0Activity extends AppCompatActivity {
         );
 
         spinnerParams.gravity = Gravity.CENTER;
+
+//        ViewCompat.setBackgroundTintList(logicSpinner1, ColorStateList.valueOf(55));
 
         logicSpinner1.setLayoutParams(spinnerParams);
 
