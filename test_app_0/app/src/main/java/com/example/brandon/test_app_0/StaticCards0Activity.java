@@ -20,6 +20,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -343,6 +345,34 @@ public class StaticCards0Activity extends AppCompatActivity {
 
 
 
+        //radio button 1 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+
+
+        int num_buttons = 1;
+        final RadioButton[] rb = new RadioButton[num_buttons];
+        RadioGroup rg = new RadioGroup(this); //create the RadioGroup
+        rg.setOrientation(RadioGroup.HORIZONTAL);//or RadioGroup.VERTICAL
+        for(int i=0; i<num_buttons; i++){
+            rb[i]  = new RadioButton(this);
+            rb[i].setText("TEXT ");
+
+            rb[i].setId(i + 100);
+            rg.addView(rb[i]);
+        }
+        bigCardViewLayout.addView(rg);//you add the whole RadioGroup to the layout
+
+
+
+
+
+
+
+
+
+
+
+        // yellow card VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 
 
 
