@@ -62,6 +62,8 @@ public class StaticCards0Activity extends AppCompatActivity {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
+//        cardViewParams.layoutAnimationParameters
+
         int margin = 20;
         cardViewParams.topMargin     = margin;
         cardViewParams.rightMargin   = margin;
@@ -127,53 +129,6 @@ public class StaticCards0Activity extends AppCompatActivity {
 
 
 
-        //popup menue for more button VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-
-
-
-
-
-        overflowBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PopupMenu menu = new PopupMenu(mContext, v);
-                menu.getMenu().add(Menu.NONE, 1, 1, "delete");
-                menu.getMenu().add(Menu.NONE, 2, 2, "edit / remove card test");
-                menu.getMenu().add(Menu.NONE, 3, 3, "move / change width test");
-                menu.show();
-
-
-                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-
-                        int i = item.getItemId();
-                        CharSequence a = item.getTitle();
-                        tv.setText("CardView" + a + i);
-
-                        if (i == 1) {
-                            //handle share
-                            card.setCardBackgroundColor(Color.parseColor("GREEN"));
-                            return true;
-                        } else if (i == 2) {
-                            card.setCardBackgroundColor(Color.parseColor("YELLOW"));
-                            container.removeView(card);
-                            //handle comment
-                            return true;
-                        } else {
-                            card.setCardBackgroundColor(Color.parseColor("BLUE"));
-                            cardViewParams.height = 400;
-
-                            card.setLayoutParams(cardViewParams);
-                            return false;
-                        }
-                    }
-
-                });
-
-            }
-        });
-
 
 
 
@@ -190,7 +145,7 @@ public class StaticCards0Activity extends AppCompatActivity {
         //add big card
         CardView bigCard = new CardView(mContext);
 
-        LinearLayout bigCardViewLayout = new LinearLayout(getApplicationContext());
+        final LinearLayout bigCardViewLayout = new LinearLayout(getApplicationContext());
         bigCardViewLayout.setOrientation(LinearLayout.VERTICAL);
 
         // Set the CardView layoutParams
@@ -351,7 +306,7 @@ public class StaticCards0Activity extends AppCompatActivity {
 
         int num_buttons = 1;
         final RadioButton[] rb = new RadioButton[num_buttons];
-        RadioGroup rg = new RadioGroup(this); //create the RadioGroup
+        final RadioGroup rg = new RadioGroup(this); //create the RadioGroup
         rg.setOrientation(RadioGroup.HORIZONTAL);//or RadioGroup.VERTICAL
         for(int i=0; i<num_buttons; i++){
             rb[i]  = new RadioButton(this);
@@ -360,11 +315,13 @@ public class StaticCards0Activity extends AppCompatActivity {
             rb[i].setId(i + 100);
             rg.addView(rb[i]);
         }
-        bigCardViewLayout.addView(rg);//you add the whole RadioGroup to the layout
 
+//        bigCardViewLayout.addView(rg);//you add the whole RadioGroup to the layout
 
+//        rg.setVisibility(View.INVISIBLE);
+//        rg.sethie
 
-
+//https://developer.android.com/training/transitions/   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 
@@ -377,7 +334,7 @@ public class StaticCards0Activity extends AppCompatActivity {
 
 
         //make 2nd small card (yellow)
-        CardView yellowCard = new CardView(mContext);
+        final CardView yellowCard = new CardView(mContext);
 
         // Set the CardView layoutParams
         LinearLayout.LayoutParams yellowCardParams = new LinearLayout.LayoutParams(
@@ -419,6 +376,60 @@ public class StaticCards0Activity extends AppCompatActivity {
 //        bigCard.addView(card);
 
 
+
+        //popup menue for more button VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+
+
+
+
+        overflowBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu menu = new PopupMenu(mContext, v);
+                menu.getMenu().add(Menu.NONE, 1, 1, "delete / move radio button");
+                menu.getMenu().add(Menu.NONE, 2, 2, "edit / remove card test");
+                menu.getMenu().add(Menu.NONE, 3, 3, "move / change width test");
+                menu.show();
+
+
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        int i = item.getItemId();
+                        CharSequence a = item.getTitle();
+                        tv.setText("CardView" + a + i);
+
+                        if (i == 1) {
+                            //handle share
+                            card.setCardBackgroundColor(Color.parseColor("GREEN"));
+
+                            //move radio button
+//                            bigCardViewLayout.removeView(rg);
+                            bigCardViewLayout.removeView(yellowCard);
+                            bigCardViewLayout.addView(rg);
+                            bigCardViewLayout.addView(yellowCard);
+
+                            return true;
+                        } else if (i == 2) {
+                            card.setCardBackgroundColor(Color.parseColor("YELLOW"));
+                            container.removeView(card);
+                            //handle comment
+                            return true;
+                        } else {
+                            card.setCardBackgroundColor(Color.parseColor("BLUE"));
+                            cardViewParams.height = 400;
+
+                            card.setLayoutParams(cardViewParams);
+                            return false;
+                        }
+                    }
+
+                });
+
+            }
+        });
 
 
 
