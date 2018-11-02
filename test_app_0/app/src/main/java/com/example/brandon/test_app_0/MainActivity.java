@@ -88,4 +88,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StaticCards0Activity.class);
         startActivity(intent);
     }
+
+
+    /** Called when the user taps the go to card activity button */
+    public void goToSaveDataActivity(View view) {
+        Intent intent = new Intent(this, saveDataActivity.class);
+        startActivity(intent);
+    }
 }

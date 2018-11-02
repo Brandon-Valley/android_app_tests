@@ -92,7 +92,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".actionBar1Activity" />
         </activity>
-
         <activity
             android:name=".StaticCards0Activity"
             android:label="StaticCards0Activity"
@@ -103,7 +102,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity
+            android:name=".saveDataActivity"
+            android:label="Save Data Test"
+            android:parentActivityName=".MainActivity">
 
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+            ></activity>
     </application>
 
 </manifest>
