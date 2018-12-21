@@ -111,7 +111,9 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-            ></activity>
+            >
+        </activity>
+        <activity android:name=".addCardActivity"></activity>
     </application>
 
 </manifest>
