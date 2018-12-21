@@ -16,9 +16,9 @@ public class saveDataActivity extends AppCompatActivity {
 
     /** Called when the user taps the go to card activity button */
     public void goToAddCardActivity(View view) {
-        Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-//        Intent intent = new Intent(this, StaticCards0Activity.class);
-//        startActivity(intent);
+//        Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show();
+        Intent intent = new Intent(this, addCardActivity.class);
+        startActivity(intent);
     }
 }
