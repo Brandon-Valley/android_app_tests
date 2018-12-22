@@ -25,4 +25,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.905"
         app:srcCompat="@android:drawable/btn_dialog" />
+
+    <LinearLayout
+        android:id="@+id/save_data_ll"
+        android:layout_width="368dp"
+        android:layout_height="404dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"></LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
