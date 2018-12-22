@@ -13,4 +13,8 @@
     <string name="button_make_new_card">Make New Card</string>
     <string name="button_go_to_static_cards_0">Go To Static Cards 0</string>
     <string name="button_go_to_save_data_activity">Go to save data activity</string>
+    <string name="spinner_option_color_red">\RED\</string>
+    <string name="spinner_option_color_blue">\BLUE\</string>
+    <string name="spinner_option_color_green">\GREEN\</string>
+    <string name="button_add_card">Add Card</string>
 </resources>
