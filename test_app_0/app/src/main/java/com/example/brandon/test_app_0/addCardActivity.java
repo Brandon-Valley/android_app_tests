@@ -46,13 +46,16 @@ public class addCardActivity extends AppCompatActivity {
 
 
     public void addCard(View view) {
+        //make card
         EditText card_name_et = (EditText) findViewById(R.id.edit_text_card_name);
+        Spinner color_spinner = (Spinner) findViewById(R.id.color_spinner);
 
         String card_name = card_name_et.getText().toString();
+        String card_color = color_spinner.getSelectedItem().toString();
 
-        Card new_card = new Card("RED", card_name);
+        Card new_card = new Card(card_color, card_name);
 
-        Snackbar.make(view, new_card.m_name, Snackbar.LENGTH_LONG)
+        Snackbar.make(view, new_card.m_name + new_card.m_color, Snackbar.LENGTH_LONG)
         .setAction("Action", null).show();
     }
 
