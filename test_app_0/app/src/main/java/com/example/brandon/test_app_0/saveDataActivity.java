@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import androidx.room.Room;
+
 public class saveDataActivity extends AppCompatActivity {
 
 
@@ -28,7 +30,6 @@ public class saveDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_data);
 
-
         //define linear layout for activity
         final LinearLayout container = (LinearLayout)findViewById(R.id.save_data_ll); // have to put this in .xml manually
 
@@ -36,6 +37,14 @@ public class saveDataActivity extends AppCompatActivity {
         final Context mContext = getApplicationContext();
 
 
+        CardDatabase db = Room.databaseBuilder(getApplicationContext(),
+                CardDatabase.class, "database-name").build();
+
+        CardEntity card1 = new CardEntity();
+        card1.firstName = "harald";
+        card1.uid = 0;
+
+        CardDao.insertCardEntity(card1);
 
         Card_Stack cs = make_fake_card_stack();
 
