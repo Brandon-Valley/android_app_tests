@@ -1,14 +1,3 @@
-package com.example.brandon.test_app_0;
-
-import android.support.annotation.NonNull;
-
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-public class CardEntity {
-}
-
-
 /*
  * *
  *  * Copyright (C) 2017 Ryan Kay Open Source Project
@@ -29,9 +18,9 @@ public class CardEntity {
 
 package roomdemo.wiseass.com.roomdemo.data;
 
-        import android.arch.persistence.room.Entity;
-        import android.arch.persistence.room.PrimaryKey;
-        import android.support.annotation.NonNull;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 /**
  * Room will use the Class name a sa default table name.
