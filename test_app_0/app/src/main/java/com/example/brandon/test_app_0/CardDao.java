@@ -1,13 +1,19 @@
 package com.example.brandon.test_app_0;
 
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.Delete;
+import android.arch.persistence.room.OnConflictStrategy;
+
 import java.util.List;
 
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
-
-import static androidx.room.OnConflictStrategy.REPLACE;
+//import androidx.room.Dao;
+//import androidx.room.Delete;
+//import androidx.room.Insert;
+//import androidx.room.Query;
+//
+//import static androidx.room.OnConflictStrategy.REPLACE;
 
 @Dao
 public interface CardDao {
@@ -24,8 +30,9 @@ public interface CardDao {
 //    @Insert
 //    void insertAll(CardEntity... CardEntitys);
 
-    @Insert(onConflict = REPLACE)
-    static void insertCardEntity(CardEntity cardEntity);
+    //(onConflict = REPLACE)
+    @Insert
+    void insertCardEntity(CardEntity cardEntity);
 
     @Delete
     void delete(CardEntity CardEntity);

@@ -1,5 +1,6 @@
 package com.example.brandon.test_app_0;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,7 +20,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import androidx.room.Room;
+import android.arch.persistence.room.Room;
+//import androidx.room.Room;
 
 public class saveDataActivity extends AppCompatActivity {
 
@@ -40,11 +42,18 @@ public class saveDataActivity extends AppCompatActivity {
         CardDatabase db = Room.databaseBuilder(getApplicationContext(),
                 CardDatabase.class, "database-name").build();
 
+        CardDao cd = db.CardDatabaseDao();
+
+
+
+
+
+
         CardEntity card1 = new CardEntity();
         card1.firstName = "harald";
         card1.uid = 0;
 
-        CardDao.insertCardEntity(card1);
+//        cd.insertCardEntity(card1);
 
         Card_Stack cs = make_fake_card_stack();
 
