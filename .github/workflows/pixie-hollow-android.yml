@@ -18,6 +18,7 @@ env:
   NDK_VERSION: r27
   CARGO_NDK_VERSION: 4.1.2
   RUFFLE_ANDROID_COMMIT: 1bcf30e76e86d535a9fad77c83dc28a1b1ee054f
+  RUST_TOOLCHAIN: 1.97.0
 
 jobs:
   build-arm64-apk:
@@ -37,10 +38,18 @@ jobs:
       - name: Apply Pixie Hollow overlay
         run: python3 pixie-hollow-android/apply_overlay.py ruffle-android
 
-      - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - name: Install pinned Rust toolchain and Android target
+        uses: dtolnay/rust-toolchain@master
         with:
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
           targets: aarch64-linux-android
+
+      - name: Verify Rust Android target
+        working-directory: ruffle-android
+        run: |
+          rustc --version
+          rustup target list --installed
+          rustup target add aarch64-linux-android --toolchain "${RUST_TOOLCHAIN}"
 
       - name: Cache Rust build output
         uses: Swatinem/rust-cache@v2
