@@ -107,26 +107,22 @@ jobs:
         with:
           cache-disabled: true
 
-      - name: Create build keystore
+      - name: Restore stable test signing key
         working-directory: ruffle-android
         run: |
-          keytool -genkeypair -v \
+          base64 --decode "$GITHUB_WORKSPACE/pixie-hollow-android/pixie-hollow-android.jks.b64" > app/androidkey.jks
+          keytool -list \
             -keystore app/androidkey.jks \
-            -alias pixie_hollow_debug \
-            -storepass pixie_hollow_debug \
-            -keypass pixie_hollow_debug \
-            -keyalg RSA \
-            -keysize 2048 \
-            -validity 10000 \
-            -dname "CN=Pixie Hollow Android, OU=Personal Build, O=Brandon Valley, L=Eureka, S=Missouri, C=US"
+            -alias pixie_hollow_android \
+            -storepass pixie_hollow_android
 
       - name: Build signed ARM64 release APK
         working-directory: ruffle-android
         env:
           ABI_FILTERS: arm64-v8a
-          SIGNING_KEY_ALIAS: pixie_hollow_debug
-          SIGNING_STORE_PASSWORD: pixie_hollow_debug
-          SIGNING_KEY_PASSWORD: pixie_hollow_debug
+          SIGNING_KEY_ALIAS: pixie_hollow_android
+          SIGNING_STORE_PASSWORD: pixie_hollow_android
+          SIGNING_KEY_PASSWORD: pixie_hollow_android
         run: ./gradlew assembleRelease
 
       - name: Prepare APK artifact
