@@ -107,26 +107,39 @@ jobs:
         with:
           cache-disabled: true
 
-      - name: Create build keystore
+      - name: Build stable test signing keystore
         working-directory: ruffle-android
         run: |
-          keytool -genkeypair -v \
+          openssl pkcs12 -export \
+            -inkey "$GITHUB_WORKSPACE/pixie-hollow-android/pixie-hollow-signing-key.pem" \
+            -in "$GITHUB_WORKSPACE/pixie-hollow-android/pixie-hollow-signing-cert.pem" \
+            -name pixie_hollow_android \
+            -out app/androidkey.p12 \
+            -passout pass:pixie_hollow_android
+
+          keytool -importkeystore -noprompt \
+            -srckeystore app/androidkey.p12 \
+            -srcstoretype PKCS12 \
+            -srcstorepass pixie_hollow_android \
+            -srcalias pixie_hollow_android \
+            -destkeystore app/androidkey.jks \
+            -deststoretype JKS \
+            -deststorepass pixie_hollow_android \
+            -destkeypass pixie_hollow_android \
+            -destalias pixie_hollow_android
+
+          keytool -list \
             -keystore app/androidkey.jks \
-            -alias pixie_hollow_debug \
-            -storepass pixie_hollow_debug \
-            -keypass pixie_hollow_debug \
-            -keyalg RSA \
-            -keysize 2048 \
-            -validity 10000 \
-            -dname "CN=Pixie Hollow Android, OU=Personal Build, O=Brandon Valley, L=Eureka, S=Missouri, C=US"
+            -alias pixie_hollow_android \
+            -storepass pixie_hollow_android
 
       - name: Build signed ARM64 release APK
         working-directory: ruffle-android
         env:
           ABI_FILTERS: arm64-v8a
-          SIGNING_KEY_ALIAS: pixie_hollow_debug
-          SIGNING_STORE_PASSWORD: pixie_hollow_debug
-          SIGNING_KEY_PASSWORD: pixie_hollow_debug
+          SIGNING_KEY_ALIAS: pixie_hollow_android
+          SIGNING_STORE_PASSWORD: pixie_hollow_android
+          SIGNING_KEY_PASSWORD: pixie_hollow_android
         run: ./gradlew assembleRelease
 
       - name: Prepare APK artifact

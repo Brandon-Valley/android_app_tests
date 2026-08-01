@@ -39,17 +39,17 @@ fun BrandBar() {
             .padding(vertical = 48.dp)
     ) {
         Text(
-            text = \"Pixie Hollow\",
+            text = "Pixie Hollow",
             style = MaterialTheme.typography.displaySmall,
             textAlign = TextAlign.Center
         )
         Text(
-            text = \"Android Launcher\",
+            text = "Android Launcher",
             style = MaterialTheme.typography.headlineSmall,
             textAlign = TextAlign.Center
         )
         Text(
-            text = \"Powered by Ruffle\",
+            text = "Powered by Ruffle",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurface.copy(
                 alpha = SLIGHTLY_DEEMPHASIZED_ALPHA
@@ -84,13 +84,13 @@ def patch_strings(root: Path) -> None:
     write_text(
         path,
         """<resources>
-    <string name=\"app_name\">Pixie Hollow Android</string>
-    <string name=\"logo_description\">Pixie Hollow Android</string>
-    <string name=\"or\">Advanced</string>
-    <string name=\"open_url\">Fly to Pixie Hollow</string>
-    <string name=\"select_a_swf\">Choose a different SWF</string>
-    <string name=\"url\">Pixie Hollow SWF URL</string>
-    <string name=\"work_in_progress_warning\">Experimental Android launcher using Ruffle. The public Pixie Hollow archive is prefilled. If the live team changes the client URL, paste the new SWF URL below.</string>
+    <string name="app_name">Pixie Hollow Android</string>
+    <string name="logo_description">Pixie Hollow Android</string>
+    <string name="or">Advanced</string>
+    <string name="open_url">Fly to Pixie Hollow</string>
+    <string name="select_a_swf">Choose a different SWF</string>
+    <string name="url">Pixie Hollow SWF URL</string>
+    <string name="work_in_progress_warning">Experimental Android launcher using Ruffle. The public Pixie Hollow archive is prefilled. If the live team changes the client URL, paste the new SWF URL below.</string>
 </resources>
 """,
     )
@@ -108,6 +108,33 @@ def patch_manifest(root: Path) -> None:
     path.write_text(text, encoding="utf-8")
 
 
+def patch_keyboard_layout(root: Path) -> None:
+    path = root / "app/src/main/res/layout/keyboard.xml"
+    text = path.read_text(encoding="utf-8")
+    keyboard_start = """    <LinearLayout
+        android:id="@+id/keyboard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:orientation="vertical"
+"""
+    keyboard_hidden = """    <LinearLayout
+        android:id="@+id/keyboard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+"""
+    text = replace_once(
+        text,
+        keyboard_start,
+        keyboard_hidden,
+        "initial hidden keyboard",
+    )
+    path.write_text(text, encoding="utf-8")
+
+
 def patch_gradle(root: Path) -> None:
     path = root / "app/build.gradle.kts"
     text = path.read_text(encoding="utf-8")
@@ -117,11 +144,11 @@ def patch_gradle(root: Path) -> None:
         'applicationId = "com.brandonvalley.pixiehollowandroid"',
         "application ID",
     )
-    text = replace_once(text, "versionCode = 260717", "versionCode = 1", "version code")
+    text = replace_once(text, "versionCode = 260717", "versionCode = 2", "version code")
     text = replace_once(
         text,
         'versionName = "0.260717"',
-        'versionName = "0.1.0"',
+        'versionName = "0.1.1"',
         "version name",
     )
     path.write_text(text, encoding="utf-8")
@@ -204,6 +231,7 @@ def main() -> None:
         root / "app/build.gradle.kts",
         root / "src/lib.rs",
         root / "app/src/main/AndroidManifest.xml",
+        root / "app/src/main/res/layout/keyboard.xml",
     ]
     missing = [str(path) for path in required if not path.exists()]
     if missing:
@@ -212,6 +240,7 @@ def main() -> None:
     patch_select_screen(root)
     patch_strings(root)
     patch_manifest(root)
+    patch_keyboard_layout(root)
     patch_gradle(root)
     patch_rust_player(root)
     print(f"Applied Pixie Hollow Android overlay to {root}")
